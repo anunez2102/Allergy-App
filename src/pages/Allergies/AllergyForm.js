@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 function AllergyForm(props) {
-
     const [input, setInput] = useState("")
 
+    const inputRef = useRef(null)
+
+    useEffect(() => {
+        inputRef.current.focus()
+    })
     const handleChange = e => {
         setInput(e.target.value)
     }
@@ -34,6 +38,7 @@ function AllergyForm(props) {
                 name="text"
                 className='allergy-input'
                 onChange={handleChange}   
+                ref={inputRef}
             />
             <button className="allergy-button">
                 Add allergy
